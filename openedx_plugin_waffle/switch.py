@@ -61,7 +61,9 @@ class WaffleSwitch(BaseSwitch):
         super().__init__(name=name, module_name=module_name)
         if not self.ready:
             log.warning(
-                "{cls}: unable to verify initialization status of waffle switch.".format(cls=self.__class__.__name__)
+                "{cls}: unable to verify initialization status of waffle switch {name}.".format(
+                    cls=self.__class__.__name__, name=self.name
+                )
             )
             return
 
@@ -75,6 +77,12 @@ class WaffleSwitch(BaseSwitch):
             if Switch and self.ready:
                 Switch.objects.create(name=self.name, active=False)
                 log.info("Initialized WaffleSwitch object {switch_name}".format(switch_name=self.name))
+            else:
+                log.warning(
+                    "{cls}: unable to initialize waffle switch {name}.".format(
+                        cls=self.__class__.__name__, name=self.name
+                    )
+                )
 
     @property
     def ready(self) -> bool:
