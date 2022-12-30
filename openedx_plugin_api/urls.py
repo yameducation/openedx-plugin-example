@@ -24,22 +24,22 @@ from .waffle import (
 
 urlpatterns = []
 
-if waffle_switches[API_META]:
+if waffle_switches[API_META].enabled:
     urlpatterns += [
         path("meta/", api.APIInfoView.as_view(), name="openedx_plugin_api_meta"),
     ]
 
-if waffle_switches[API_USERS]:
+if waffle_switches[API_USERS].enabled:
     urlpatterns += [
         path("users/", api.UsersAPIView.as_view(), name="openedx_plugin_api_users"),
     ]
 
-if waffle_switches[API_TOKEN]:
+if waffle_switches[API_TOKEN].enabled:
     urlpatterns += [
         path("token/", api.RefreshToken.as_view(), name="openedx_plugin_api_token"),
     ]
 
-if waffle_switches[API_ENROLLMENT]:
+if waffle_switches[API_ENROLLMENT].enabled:
     urlpatterns += [
         path(
             "unenroll/",
@@ -49,7 +49,7 @@ if waffle_switches[API_ENROLLMENT]:
         path("enroll/", api.EnrollUserAPIView.as_view(), name="openedx_plugin_api_enroll"),
     ]
 
-if waffle_switches[API_ASSOCIATE]:
+if waffle_switches[API_ASSOCIATE].enabled:
     urlpatterns += [
         path(
             "associate/",
@@ -58,7 +58,7 @@ if waffle_switches[API_ASSOCIATE]:
         ),
     ]
 
-if waffle_switches[API_PERMISSIONS]:
+if waffle_switches[API_PERMISSIONS].enabled:
     urlpatterns += [
         path(
             "roles/grant/",
@@ -72,7 +72,7 @@ if waffle_switches[API_PERMISSIONS]:
         ),
     ]
 
-if waffle_switches[API_COURSE]:
+if waffle_switches[API_COURSE].enabled:
     urlpatterns += [
         path(
             "course-mode/",
@@ -116,7 +116,7 @@ if waffle_switches[API_COURSE]:
         ),
     ]
 
-if waffle_switches[API_STUDENT]:
+if waffle_switches[API_STUDENT].enabled:
     urlpatterns += [
         path(
             "student/<str:username>/course/<str:course_key>/modules/",

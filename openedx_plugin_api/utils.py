@@ -11,9 +11,6 @@ from datetime import datetime
 from pytz import UTC
 import re
 
-from django.urls import reverse
-from django.urls.exceptions import NoReverseMatch
-
 from openedx.core.djangoapps.user_api.accounts.utils import (
     retrieve_last_sitewide_block_completed,
 )

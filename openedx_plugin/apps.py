@@ -55,7 +55,7 @@ class CustomPluginConfig(AppConfig):
     # This is the text that appears in the Django admin console in all caps
     # as the title box encapsulating all Django app models that are registered
     # in admin.py.
-    verbose_name = "Example plugin for Open edX"
+    verbose_name = "Open edX Example Plugin"
 
     # See: https://edx.readthedocs.io/projects/edx-django-utils/en/latest/edx_django_utils.plugins.html
     plugin_app = {

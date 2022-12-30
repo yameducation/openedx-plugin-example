@@ -25,7 +25,7 @@ log.info("openedx_plugin.signals loaded")
 
 def signals_enabled() -> bool:
     try:
-        return waffle_switches[SIGNALS]
+        return waffle_switches[SIGNALS].enabled
     except Exception:
         # to resolve a race condition during application launch.
         # the waffle_switches are inspected before the db service

@@ -21,7 +21,7 @@ from .waffle import waffle_switches, AUDIT_REPORT
 
 urlpatterns = []
 
-if waffle_switches[AUDIT_REPORT]:
+if waffle_switches[AUDIT_REPORT].enabled:
     urlpatterns += [
         # Log paginated UI
         url(r"^log/$", plugin_cms_change_log, name="plugin_cms_change_log"),

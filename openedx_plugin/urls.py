@@ -19,12 +19,12 @@ app_name = "openedx_plugin"
 
 urlpatterns = []
 
-if waffle_switches[AUTOMATED_ENROLLMENT]:
+if waffle_switches[AUTOMATED_ENROLLMENT].enabled:
     urlpatterns += [
         url(r"^dashboard/?$", student_dashboard, name="example_dashboard"),
     ]
 
-if waffle_switches[MARKETING_REDIRECTOR]:
+if waffle_switches[MARKETING_REDIRECTOR].enabled:
     urlpatterns += [
         url(
             r"^marketing-redirector/?$",

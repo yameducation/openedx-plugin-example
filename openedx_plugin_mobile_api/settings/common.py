@@ -27,7 +27,7 @@ def plugin_settings(settings):
 
     see: https://stackoverflow.com/questions/56129708/how-to-force-redirect-uri-to-use-https-with-python-social-app
     """
-    if waffle_switches[OVERRIDE_MOBILE_USER_API_URL]:
+    if waffle_switches[OVERRIDE_MOBILE_USER_API_URL].enabled:
         middleware = getattr(settings, "MIDDLEWARE", None)
         if middleware:
             settings.MIDDLEWARE.append("openedx_plugin_mobile_api.middleware.MobileApiRedirectMiddleware")

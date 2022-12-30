@@ -23,7 +23,7 @@ class MobileApiRedirectMiddleware:
 
     def __call__(self, request):
 
-        if request.path.startswith(MOBILE_USER_API_URL) and waffle_switches[OVERRIDE_MOBILE_USER_API_URL]:
+        if request.path.startswith(MOBILE_USER_API_URL) and waffle_switches[OVERRIDE_MOBILE_USER_API_URL].enabled:
             log.info(
                 "openedx_plugin_api.middleware.APIRedirectMiddleware.__call__() redirecting host: {host} path: {path}".format(
                     host=request.META["HTTP_HOST"], path=request.path

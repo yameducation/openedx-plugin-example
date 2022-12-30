@@ -26,7 +26,7 @@ amplifiers and biasing, and to have fun with music! There are no responses
 that need to be checked.</p><p>In the lab below, you will find:</p><ul><li><p>A circuit schematic of the MOSFET amplifier. You can use the sliders
         to the left of the circuit to control various parameters of the MOSFET and
         the amplifier.</p></li><li><p>A plot (as a function of time) of selected voltages from the amplifier
-        circuit. You can select the input waveform (e.g., sine wave, square wave, 
+        circuit. You can select the input waveform (e.g., sine wave, square wave,
         various types of music) by using the \(v_\mathrm{IN}\)
         drop-down menu and the associated sliders. (The parameter \(V_\mathrm{MAX}\)
         sets the maximum range on the plots.)</p></li><li><p>The "Play" button which lets you listen to the selected voltage
@@ -423,7 +423,7 @@ function toggle2(showHideDiv, switchTextDiv) {
             font-weight: bold;
             margin: 5px;
             }
-            #IntroductionHeader { 
+            #IntroductionHeader {
             font-size: 1.1em;
             font-weight: bold;
             margin: 5px;
@@ -473,7 +473,7 @@ function toggle2(showHideDiv, switchTextDiv) {
 ================================================================================
 <class 'xblock.internal.ProblemBlockWithMixins'>
 <problem>
-  <p> The Dopamine molecule, as shown, cannot make ionic bonds. Edit the dopamine molecule so it can make ionic bonds. 
+  <p> The Dopamine molecule, as shown, cannot make ionic bonds. Edit the dopamine molecule so it can make ionic bonds.
     </p>
   <p>
         When you are ready, click "Check.” If you need to start over, click
@@ -534,11 +534,11 @@ def check1(expect, ans):
         such that we can pay off the
         debt within a year.</p>
     <p>Note that if you do not use bisection search, your code will not run - your code only has
-      30 seconds to run on our servers. If you get a message that states "Your submission could not be graded. Please recheck your 
-      submission and try again. If the problem persists, please notify the course staff.", check to be 
+      30 seconds to run on our servers. If you get a message that states "Your submission could not be graded. Please recheck your
+      submission and try again. If the problem persists, please notify the course staff.", check to be
       sure your code doesn't take too long to run.</p>
-    <p>The code you paste into the following box should not specify the values for the variables <code>balance</code> 
-      or <code>annualInterestRate</code> - our test code will define those values 
+    <p>The code you paste into the following box should not specify the values for the variables <code>balance</code>
+      or <code>annualInterestRate</code> - our test code will define those values
       before testing your submission. </p>
   </text>
   <coderesponse>
@@ -551,7 +551,7 @@ lowerBound = balance/12
 upperBound = (balance * (1+annualInterestRate/12)**12)/12
 originalBalance = balance
 
-# Keep testing new payment values 
+# Keep testing new payment values
 #  until the balance is +/- $0.02
 while abs(balance) &gt; .02:
     # Reset the value of balance to its original value
@@ -559,14 +559,14 @@ while abs(balance) &gt; .02:
     # Calculate a new monthly payment value from the bounds
     payment = (upperBound - lowerBound)/2 + lowerBound
 
-    # Test if this payment value is sufficient to pay off the 
+    # Test if this payment value is sufficient to pay off the
     #  entire balance in 12 months
     for month in range(12):
         balance -= payment
         balance *= 1+monthlyInterestRate
 
     # Reset bounds based on the final value of balance
-    if balance &gt; 0: 
+    if balance &gt; 0:
         # If the balance is too big, need higher payment
     #  so we increase the lower bound
         lowerBound = payment
@@ -575,7 +575,7 @@ while abs(balance) &gt; .02:
     #  payment, so we decrease the upper bound
         upperBound = payment
 
-# When the while loop terminates, we know we have 
+# When the while loop terminates, we know we have
 #  our answer!
 print("Lowest Payment:", round(payment, 2))
 </answer_display>
@@ -596,11 +596,11 @@ print("Lowest Payment:", round(payment, 2))
       <h3>Hints</h3>
       <div class="collapsible">
         <header>
-          <a href="#" id="ht3l">Test Cases to test your code with. Be sure to test these on your own machine - 
+          <a href="#" id="ht3l">Test Cases to test your code with. Be sure to test these on your own machine -
     and that you get the same output! - before running your code on this webpage! </a>
         </header>
         <section id="ht3">
-          <p><b>Note:</b> The automated tests are lenient - if your answers are off by a few cents 
+          <p><b>Note:</b> The automated tests are lenient - if your answers are off by a few cents
     in either direction, your code is OK. </p>
           <p>Test Cases:</p>
           <ol>
@@ -623,7 +623,7 @@ print("Lowest Payment:", round(payment, 2))
           Test Case 2:
           balance = 999999
           annualInterestRate = 0.18
-          
+
           Result Your Code Should Generate:
           -------------------
           Lowest Payment: 90325.07
@@ -643,17 +643,17 @@ print("Lowest Payment:", round(payment, 2))
 Your submission could not be graded.
 Please recheck your submission and try again. If the problem persists, please notify the course staff.
       </pre>
-          <p>Don't panic! There are a few things that might be wrong with your code that you should 
+          <p>Don't panic! There are a few things that might be wrong with your code that you should
         check out. The number one reason this message appears is because your code timed out.
         You only get 30 seconds of computation time on our servers. If your code times out,
         you probably have an infinite loop. What to do?</p>
-          <p>The number 1 thing to do is that you need to run this code in your own local 
+          <p>The number 1 thing to do is that you need to run this code in your own local
         environment. Your code should print one line at the end of the loop. If your code never prints anything
         out - you have an infinite loop!</p>
-          <p>To debug your infinite loop - check your loop conditional. When will it stop? 
+          <p>To debug your infinite loop - check your loop conditional. When will it stop?
         Try inserting print statements inside your loop that prints out information (like variables) - are you
         incrementing or decrementing your loop counter correctly?
-        Search the forum for people with similar issues. If your search turns up nothing, 
+        Search the forum for people with similar issues. If your search turns up nothing,
         make a new post and paste in your loop conditional for others to help you out with.</p>
           <p>Please don't email the course staff unless your code legitimately works and prints out the
         correct answers in your local environment. In that case, please email your code file,
@@ -789,7 +789,7 @@ the ratio \(\frac{L}{W}\) such that \(V_{OL}\) is always \(\lt 0.25V\).</p>
       <p>The first thing to do is to identify the scenario in which \(V_{OUT}\) takes on its maximum possible value in the context of a logical 0. This scenario corresponds to the worst-case \(V_{OL}\).
 There must be a full conducting path from \(V_{OUT}\) to ground to have a logical 0, which imposes the first condition. And because \(V_{OUT}\) is in the middle of a voltage divider between \(R_{pullup}\) and the equivalent "on" resistance of the MOS- FETs, we should be able to convince ourselves that \(V_{OL}\) takes on its highest value whenever the equivalent resistance of the "on" MOSFET network is the LARGEST because it is still constrained by an existing conducting path from \(V_{OUT}\) to ground.</p>
       <p>Finding the largest combination of resistances is simple: if we replace "on" transistors with resistors of resistance \(R_{ON}\), and "off" transistors with open circuits, we find the largest combination of resistance comes from a series connection between \(C\) and only one of \(A\) or \(B\), but NOT both. This results in an equivalent resistance of \(R_{EQ}=2\cdot R_{ON}\).</p>
-      <p>We now solve for REQ using the voltage divider forumla: 
+      <p>We now solve for REQ using the voltage divider forumla:
 \[\frac{V_{DD}\cdot R_{EQ}}{R_{pullup} +R_{EQ}} \lt 0.25 \\ \] </p>
       <p>Plugging in for our values, we end up with \(R_{ON} \lt 454.56\) as our constraint.
 Plugging in once more into the given form of \(R_{ON}\), we end up with our final constraint on the transistor sizing:
@@ -908,7 +908,7 @@ else:
 <div id="ap_listener_added">&nbsp;</div>
 ================================================================================
 <class 'xblock.internal.HtmlBlockWithMixins'>
-<script src='/static/instanthangouts-0.1.0.js' ></script>
+<script src='/static/instanthangouts-0.1.1.js' ></script>
 <div class='instanthangouts'></div>
 ================================================================================
 <class 'xblock.internal.HtmlBlockWithMixins'>
@@ -1005,7 +1005,7 @@ else:
 <class 'xblock.internal.ProblemBlockWithMixins'>
 <problem>
   <text>
-    <p>Some problems change depending on when and how you look at them because they are using randomized elements. For these problems, you will be able to reset the question after you answer it, which will reconstruct the problem with a new set of parameters. 
+    <p>Some problems change depending on when and how you look at them because they are using randomized elements. For these problems, you will be able to reset the question after you answer it, which will reconstruct the problem with a new set of parameters.
     </p>
     <p>
 After you answer the question and submit it for grading, you will not always be able to get back the same question. If you want to keep your question the same, don't 'check' your answer, just 'save' it.</p>
