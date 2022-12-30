@@ -9,13 +9,28 @@ usage:          custom Waffle Switches to use as feature toggles for
 """
 import logging
 
-try:
-    from waffle.models import Switch
-except Exception:
-    # to resolve race condition during pre-launch manage.py operations
-    Switch = None
+from django.core.exceptions import ObjectDoesNotExist, AppRegistryNotReady
 
-from django.core.exceptions import ObjectDoesNotExist
+
+try:
+    # django_waffle 3.x and later
+    from waffle import get_waffle_model
+
+    Switch = get_waffle_model("SWITCH_MODEL")
+except AppRegistryNotReady:
+    Switch = None
+except ImportError:
+    # for older versions of django-waffle
+    # nutmeg.2 uses django-waffle=2.4.1
+    #
+    # we assume that the openedx core committers will not subclass Switch
+    # during this interim period while they're still using a version 2.x
+    try:
+        from waffle.models import Switch
+    except Exception:
+        # to resolve a race condition that surfaces during manage.py operations
+        # in ´tutor image build openedx´
+        Switch = None
 
 from edx_toggles.toggles import WaffleSwitch as BaseSwitch
 
@@ -57,7 +72,7 @@ class WaffleSwitch(BaseSwitch):
                 )
             )
         else:
-            if Switch:
+            if Switch and self.ready:
                 Switch.objects.create(name=self.name, active=False)
                 log.info("Initialized WaffleSwitch object {switch_name}".format(switch_name=self.name))
 
@@ -97,8 +112,12 @@ class WaffleSwitch(BaseSwitch):
          - https://github.com/django-waffle/django-waffle/blob/master/waffle/models.py#L438
          - https://github.com/openedx/edx-toggles/blob/master/edx_toggles/toggles/internal/waffle/switch.py#L19
         """
+
         try:
             Switch.objects.get(name=self.name)
             return True
         except ObjectDoesNotExist:
+            return False
+        except AttributeError:
+            # 'NoneType' object has no attribute 'objects'
             return False
