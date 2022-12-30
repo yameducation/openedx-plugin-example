@@ -9,8 +9,13 @@ usage:          custom Waffle Switches to use as feature toggles for
 """
 import logging
 
-from waffle.models import Switch
-from django.core.exceptions import ObjectDoesNotExist, AppRegistryNotReady
+try:
+    from waffle.models import Switch
+except Exception:
+    # to resolve race condition during pre-launch manage.py operations
+    Switch = None
+
+from django.core.exceptions import ObjectDoesNotExist
 
 from edx_toggles.toggles import WaffleSwitch as BaseSwitch
 
@@ -52,8 +57,9 @@ class WaffleSwitch(BaseSwitch):
                 )
             )
         else:
-            Switch.objects.create(name=self.name, active=False)
-            log.info("Initialized WaffleSwitch object {switch_name}".format(switch_name=self.name))
+            if Switch:
+                Switch.objects.create(name=self.name, active=False)
+                log.info("Initialized WaffleSwitch object {switch_name}".format(switch_name=self.name))
 
     @property
     def ready(self) -> bool:
