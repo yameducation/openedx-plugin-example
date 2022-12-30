@@ -9,28 +9,12 @@ usage:          custom Waffle Switches to use as feature toggles for
 """
 import logging
 
+from waffle.models import Switch
 from django.core.exceptions import ObjectDoesNotExist, AppRegistryNotReady
 
 from edx_toggles.toggles import WaffleSwitch as BaseSwitch
 
 log = logging.getLogger(__name__)
-
-try:
-    # django_waffle 3.x and later
-    from waffle import get_waffle_model
-
-    Switch = get_waffle_model("SWITCH_MODEL")
-except AppRegistryNotReady:
-    log.error("waffle.py internal error: django_waffle app is not ready.")
-    from waffle.models import Switch
-except ImportError:
-    # for older versions of django-waffle
-    # nutmeg.2 uses django-waffle=2.4.1
-    #
-    # we assume that the openedx core committers will not subclass Switch
-    # during this interim period while they're still using a version 2.x
-    log.warning("waffle.py: get_waffle_model() not found. Importing Switch class directly from waffle.models")
-    from waffle.models import Switch
 
 
 class WaffleSwitch(BaseSwitch):
